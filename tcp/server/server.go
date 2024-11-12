@@ -5,11 +5,15 @@ import (
 	"fmt"
 	"log"
 	"net"
+	"os"
 	"strings"
 )
 
 func main() {
 	addr := ":8089"
+	if len(os.Args) > 1 {
+		addr = os.Args[1]
+	}
 	listener, err := net.Listen("tcp", addr)
 	if err != nil {
 		log.Fatal(err)

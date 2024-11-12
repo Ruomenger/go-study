@@ -10,7 +10,12 @@ import (
 )
 
 func main() {
-	conn, err := net.Dial("tcp", "192.168.0.109:8089")
+	addr := "127.0.0.1:8089"
+	if len(os.Args) > 1 {
+		addr = os.Args[1]
+	}
+	fmt.Println("args:", addr)
+	conn, err := net.Dial("tcp", addr)
 	if err != nil {
 		log.Fatal(err)
 	}
